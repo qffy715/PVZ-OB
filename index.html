@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PVZ-OB · 植物大战僵尸改版</title>
+<meta name="description" content="PVZ-OB —— 植物大战僵尸粉丝自制改版：僵尸机制重做、数值再平衡，草坪攻防战的全新体验。">
+<style>
+  :root{
+    --bg:#0b120c; --bg2:#101a12; --card:#14231a;
+    --green:#7bd88f; --green-dim:#3f7d52; --lime:#c8f04b;
+    --text:#e8f2ea; --muted:#9db8a4; --line:#223627;
+    --accent:#ffb340;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    line-height:1.7;
+  }
+  /* 草坪纹理：纯 CSS 斜条纹 */
+  .lawn{
+    background:
+      repeating-linear-gradient(135deg, rgba(123,216,143,.05) 0 14px, transparent 14px 28px),
+      radial-gradient(1200px 500px at 50% -10%, #16281c 0%, var(--bg) 70%);
+  }
+  header.nav{
+    position:sticky;top:0;z-index:10;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 28px;background:rgba(11,18,12,.85);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+  }
+  .logo{font-weight:800;font-size:20px;letter-spacing:2px;color:var(--lime)}
+  .logo small{color:var(--muted);font-weight:400;letter-spacing:0;margin-left:8px;font-size:13px}
+  .nav a.btn{margin:0}
+  .btn{
+    display:inline-block;padding:12px 30px;border-radius:10px;
+    background:var(--lime);color:#0b120c;font-weight:700;text-decoration:none;
+    border:none;cursor:pointer;font-size:16px;transition:transform .15s, box-shadow .15s;
+  }
+  .btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(200,240,75,.25)}
+  .btn.ghost{background:transparent;color:var(--green);border:1px solid var(--green-dim)}
+  .btn.ghost:hover{box-shadow:none;border-color:var(--green)}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 24px}
+  .hero{text-align:center;padding:110px 24px 90px}
+  .hero .tag{
+    display:inline-block;padding:6px 16px;border:1px solid var(--green-dim);
+    border-radius:999px;color:var(--green);font-size:13px;letter-spacing:3px;margin-bottom:26px;
+  }
+  .hero h1{font-size:64px;letter-spacing:6px;color:var(--lime);text-shadow:0 0 40px rgba(200,240,75,.25);line-height:1.2}
+  .hero p.sub{color:var(--muted);font-size:18px;margin:18px 0 36px}
+  .hero .cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .ver{margin-top:22px;color:var(--muted);font-size:13px}
+  .ver .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent);margin-right:6px;animation:blink 1.6s infinite}
+  @keyframes blink{50%{opacity:.35}}
+  section{padding:70px 0;border-top:1px solid var(--line)}
+  h2.sec{font-size:28px;margin-bottom:8px;color:var(--text)}
+  h2.sec::before{content:"▮ ";color:var(--lime)}
+  p.lead{color:var(--muted);margin-bottom:34px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:26px 22px;transition:transform .15s,border-color .15s;
+  }
+  .card:hover{transform:translateY(-4px);border-color:var(--green-dim)}
+  .card .icon{font-size:30px;margin-bottom:12px}
+  .card h3{font-size:17px;margin-bottom:8px;color:var(--lime)}
+  .card p{font-size:14px;color:var(--muted)}
+  .dl-box{
+    background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:40px 36px;text-align:center;
+  }
+  .dl-box h3{font-size:22px;margin-bottom:10px}
+  .dl-box p{color:var(--muted);font-size:14px;margin-bottom:24px}
+  .req{
+    display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+    margin-top:26px;font-size:13px;color:var(--muted);
+  }
+  .req span{border:1px solid var(--line);border-radius:999px;padding:6px 16px;background:var(--bg2)}
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin-top:34px;text-align:left}
+  .step{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:20px}
+  .step b{display:block;color:var(--lime);margin-bottom:6px}
+  .step p{font-size:14px;color:var(--muted)}
+  details{
+    background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:18px 22px;margin-bottom:12px;
+  }
+  summary{cursor:pointer;font-weight:600;color:var(--text)}
+  summary::marker{color:var(--lime)}
+  details p{margin-top:10px;font-size:14px;color:var(--muted)}
+  footer{border-top:1px solid var(--line);padding:34px 0;text-align:center;color:var(--muted);font-size:13px}
+  footer a{color:var(--green);text-decoration:none}
+  @media(max-width:600px){.hero h1{font-size:44px}.hero{padding:80px 20px 60px}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="logo">PVZ-OB<small>植物大战僵尸改版</small></div>
+  <a class="btn" href="#download" style="padding:9px 22px;font-size:14px">下载</a>
+</header>
+
+<div class="lawn">
+  <div class="hero wrap">
+    <div class="tag">粉丝自制改版 · 开发中</div>
+    <h1>PVZ-OB</h1>
+    <p class="sub">同样的草坪，不一样的攻防战。<br>僵尸机制重做 × 数值再平衡 × 全新对局体验。</p>
+    <div class="cta">
+      <a class="btn" href="https://github.com/qffy715/PVZ-OB/releases">前往下载</a>
+      <a class="btn ghost" href="#features">看看改了什么</a>
+    </div>
+    <div class="ver"><span class="dot"></span>当前版本 v0.1（开发中）· 安装包即将发布</div>
+  </div>
+</div>
+
+<div class="wrap">
+  <section id="about">
+    <h2 class="sec">关于这个改版</h2>
+    <p class="lead">PVZ-OB 是一次从底层手感出发的 PvZ1 改版：不只是换贴图，而是让每一只僵尸的行为都值得你重新研究。第一批重做聚焦在经典高威胁僵尸身上，后续版本会逐步覆盖更多单位与关卡。</p>
+  </section>
+
+  <section id="features">
+    <h2 class="sec">核心特性</h2>
+    <p class="lead">以下为规划中的改版方向，具体数值与机制以后续版本为准。</p>
+    <div class="grid">
+      <div class="card">
+        <div class="icon">🧟</div>
+        <h3>僵尸机制重做</h3>
+        <p>以橄榄球僵尸为代表的高威胁单位将获得全新行为逻辑，不再是单纯的"血厚走得快"。</p>
+      </div>
+      <div class="card">
+        <div class="icon">⚖️</div>
+        <h3>数值再平衡</h3>
+        <p>围绕新机制重新调校植物与僵尸的攻防曲线，让冷门植物也有上场机会。</p>
+      </div>
+      <div class="card">
+        <div class="icon">🌊</div>
+        <h3>对局节奏革新</h3>
+        <p>出怪编排与波次压力重新设计，中后期的每一波都需要临场决策。</p>
+      </div>
+      <div class="card">
+        <div class="icon">🔧</div>
+        <h3>持续迭代</h3>
+        <p>按版本逐步放出重做内容，每个版本聚焦一批单位，打磨到位再上线。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="download">
+    <h2 class="sec">下载</h2>
+    <p class="lead">安装包将在 GitHub Releases 发布，敬请期待。</p>
+    <div class="dl-box">
+      <h3>PVZ-OB v0.1 <span style="color:var(--accent);font-size:14px">· 即将发布</span></h3>
+      <p>首个版本将包含第一批僵尸机制重做内容。发布后你可以在这里一键下载。</p>
+      <a class="btn" href="https://github.com/qffy715/PVZ-OB/releases">前往 Releases 页面</a>
+      <div class="req">
+        <span>🖥️ Windows 7 / 10 / 11</span>
+        <span>💿 需要原版《植物大战僵尸》</span>
+        <span>📦 解压即玩，无需安装</span>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step"><b>1 · 下载</b><p>从 Releases 页下载最新版本的压缩包。</p></div>
+      <div class="step"><b>2 · 解压</b><p>解压到任意目录，建议与原版游戏分开放置。</p></div>
+      <div class="step"><b>3 · 开战</b><p>运行主程序，回到那片熟悉又陌生的草坪。</p></div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <h2 class="sec">常见问题</h2>
+    <details>
+      <summary>这是官方作品吗？</summary>
+      <p>不是。PVZ-OB 是粉丝自制改版，与 PopCap Games / EA 无关，仅供学习交流，请支持正版游戏。</p>
+    </details>
+    <details>
+      <summary>需要购买原版游戏吗？</summary>
+      <p>需要。本改版基于原版《植物大战僵尸》运行，请确保你拥有正版游戏。</p>
+    </details>
+    <details>
+      <summary>在哪里反馈 bug 或提建议？</summary>
+      <p>欢迎到 GitHub 仓库的 Issues 区留言，描述复现步骤并附上截图。</p>
+    </details>
+    <details>
+      <summary>后续版本会更新什么？</summary>
+      <p>按计划逐步重做更多僵尸单位与关卡编排，具体路线以后续版本公告为准。</p>
+    </details>
+  </section>
+</div>
+
+<footer>
+  <p>PVZ-OB · 粉丝自制改版，与 PopCap Games / EA 无关</p>
+  <p style="margin-top:8px"><a href="https://github.com/qffy715/PVZ-OB">GitHub 仓库</a> · 由 qffy715 制作</p>
+</footer>
+
+</body>
+</html>

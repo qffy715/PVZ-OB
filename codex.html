@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="《植物大战僵尸：破序》v1.0.1 RC1 改版图鉴：49株植物与35类僵尸的75种形态，支持属性搜索、分类筛选和精英切换。">
+<meta name="theme-color" content="#0b100c">
+<title>改版图鉴 · 植物大战僵尸：破序 | OrderBreak</title>
+<link rel="stylesheet" href="assets/codex.css">
+<noscript><style>.js-only{display:none!important}.no-js-note{display:block!important}</style></noscript>
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="https://qffy715.github.io/PVZ-OB/" aria-label="返回《植物大战僵尸：破序》官网">
+      <span class="brand-icon" aria-hidden="true">❖</span>
+      <span><b>破序</b><small>ORDERBREAK · CODEX</small></span>
+    </a>
+    <div class="head-right"><span class="tag version">v1.0.1 RC1</span><a class="back-link" href="https://qffy715.github.io/PVZ-OB/">← 返回官网</a></div>
+  </div>
+</header>
+<main id="main">
+  <section class="intro" aria-labelledby="pageTitle">
+    <div class="intro-pattern" aria-hidden="true"></div>
+    <div class="wrap intro-content">
+      <div class="eyebrow">THE ORDERBREAK ARCHIVES / 破序资料库</div>
+      <h1 id="pageTitle">植物与僵尸<span>改版图鉴</span></h1>
+      <p class="lede">从植物技能改造到精英僵尸分流，查看《破序》当前版本已经整理的机制、数值和特殊能力。<strong>原始资料中的“待核对”项会原样保留。</strong></p>
+      <div class="stats" aria-label="图鉴收录规模">
+        <div class="stat"><strong>49</strong><span>株植物</span></div>
+        <div class="stat"><strong>35</strong><span>类僵尸</span></div>
+        <div class="stat"><strong>75</strong><span>条形态记录</span></div>
+      </div>
+    </div>
+  </section>
+  <section class="library wrap" aria-labelledby="libraryTitle">
+    <div class="library-top">
+      <div><span class="section-eyebrow">EXPLORE THE CODEX</span><h2 id="libraryTitle">图鉴目录</h2></div>
+      <p class="catalog-note">以 v1.0.1 RC1 数据档案为准<br>未包含独立测试中的 BGM 分支</p>
+    </div>
+    <div class="filters js-only">
+      <div class="tabs" role="tablist" aria-label="选择图鉴类型">
+        <button type="button" id="tabPlants" class="tab active" role="tab" aria-selected="true" aria-controls="catalog" data-tab="plants">🌱 植物图鉴 <span>49</span></button>
+        <button type="button" id="tabZombies" class="tab" role="tab" aria-selected="false" aria-controls="catalog" data-tab="zombies">☠ 僵尸图鉴 <span>35类 / 75形态</span></button>
+      </div>
+      <div class="filter-line">
+        <div class="search-box"><label for="search">搜索名称 / 机制 / 技能</label><div class="search-wrap"><span aria-hidden="true">⌕</span><input id="search" type="search" autocomplete="off" spellcheck="false" placeholder="例如：玉米投手、铁锁、瞬移、黄油……"></div></div>
+        <div class="select-box"><label for="category">分类筛选</label><select id="category"></select></div>
+        <button type="button" id="reset" class="reset">重置筛选</button>
+      </div>
+    </div>
+    <div class="results-bar" aria-live="polite" aria-atomic="true"><span id="resultCount">正在载入图鉴数据…</span><span class="result-hint">点击僵尸形态标签可以切换精英数据</span></div>
+    <div id="catalog" class="catalog" aria-live="off"></div>
+    <div id="empty" class="empty" hidden><b>没有找到符合条件的记录</b><p>试试更短的关键词，或重置搜索和分类条件。</p><button type="button" id="emptyReset">清除条件</button></div>
+    <div class="no-js-note" style="display:none">
+      <b>此交互图鉴需要 JavaScript 才能使用搜索和形态切换。</b>
+      <p>你仍可访问上方《破序》官网；原始数值资料保留在项目的 Excel 归档中。</p>
+    </div>
+  </section>
+  <section class="disclaimer wrap" aria-labelledby="scopeTitle"><h2 id="scopeTitle">资料口径</h2>
+    <p>本图鉴从项目既有的“49株植物改版详情”及“僵尸改版详情—传送门盾600HP修正版”Excel 提取，保留原来的术语与具体技能描述；它是资料展示，不代表逐项重新进行了 Windows 动态验收。特殊模式下的出怪规则可能与一般模式不同，图鉴中的概率通常表示对应僵尸类别内部的分流。</p>
+    <p>这是非商业粉丝改版的辅助资料，与 PopCap / EA 无官方关联。本文仅作改版机制介绍，不提供原版游戏资源下载。</p>
+  </section>
+</main>
+<footer class="footer"><div class="wrap">植物大战僵尸：破序 · OrderBreak <span>© 2026 · 粉丝资料图鉴 · 第二阶段独立预览</span></div></footer>
+<script>document.documentElement.classList.remove('no-js');</script>
+<script src="assets/codex-data.js" defer></script>
+<script src="assets/codex.js" defer></script>
+</body>
+</html>

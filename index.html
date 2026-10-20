@@ -192,6 +192,28 @@ margin-left:auto;width:44px;height:44px;background:none;border:1px solid var(--l
 section{padding:72px 0}
 .ver-badge{font-size:12px;letter-spacing:1px}
 }
+
+/* 第二阶段合并：无 JS 时窄屏导航静态展开（第一阶段补丁） */
+@media (max-width: 900px) {
+  html.no-js .nav-inner {
+    height: auto;
+    min-height: 64px;
+    flex-wrap: wrap;
+    padding-bottom: 8px;
+  }
+  html.no-js .nav-links {
+    display: flex;
+    position: static;
+    order: 3;
+    width: 100%;
+    margin-left: 0;
+    padding: 0;
+    border-bottom: 0;
+  }
+  html.no-js .nav-toggle { display: none; }
+}
+.codex-note a{color:var(--gold)}
+.codex-note a:hover{text-decoration:underline;text-underline-offset:4px}
 </style>
 <noscript><style>.rv{opacity:1!important;transform:none!important}</style></noscript>
 </head>
@@ -203,6 +225,7 @@ section{padding:72px 0}
 <div class="nav-links" id="navMenu">
 <a href="#top">官网首页</a>
 <a href="#features">改版特色</a>
+<a href="codex.html">改版图鉴</a>
 <a href="#changelog">版本日志</a>
 <a href="#download">游戏下载</a>
 <a href="#faq">常见问题</a>
@@ -253,7 +276,7 @@ section{padding:72px 0}
 <div class="feat-card rv"><div class="icon">🌱</div><h4>经典还原</h4><p>保留原版草坪、手感与美术味道，改的是玩法不是情怀。</p></div>
 </div>
 </div>
-<p class="codex-note rv">完整植物 / 僵尸图鉴筹备中，敬请期待。</p>
+<p class="codex-note rv"><a href="codex.html">查看植物与僵尸改版图鉴 →</a></p>
 </div>
 </section>
 <section id="changelog">

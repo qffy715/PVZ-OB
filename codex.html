@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="《植物大战僵尸：破序》v1.0.2（C08）改版图鉴：49株植物与35类僵尸的75种形态，支持属性搜索、分类筛选和精英切换。">
+<meta name="description" content="《植物大战僵尸：破序》v1.1.1 改版图鉴：49株植物与35类僵尸的75种形态，支持属性搜索、分类筛选和精英切换。">
 <meta name="theme-color" content="#0b100c">
 <title>改版图鉴 · 植物大战僵尸：破序 | OrderBreak</title>
 <link rel="stylesheet" href="assets/codex.css">
@@ -16,7 +16,7 @@
       <span class="brand-icon" aria-hidden="true">❖</span>
       <span><b>破序</b><small>ORDERBREAK · CODEX</small></span>
     </a>
-    <div class="head-right"><span class="tag version">v1.0.2 · C08</span><a class="back-link" href="https://qffy715.github.io/PVZ-OB/">← 返回官网</a></div>
+    <div class="head-right"><span class="tag version">v1.1.1</span><a class="back-link" href="https://qffy715.github.io/PVZ-OB/">← 返回官网</a></div>
   </div>
 </header>
 <main id="main">
@@ -36,7 +36,7 @@
   <section class="library wrap" aria-labelledby="libraryTitle">
     <div class="library-top">
       <div><span class="section-eyebrow">EXPLORE THE CODEX</span><h2 id="libraryTitle">图鉴目录</h2></div>
-      <p class="catalog-note">以 v1.0.2（C08）数据档案为准<br>未包含独立测试中的 BGM 分支</p>
+      <p class="catalog-note">以 v1.1.1 数据档案为准<br>49株全局参数沿用 v1.0.2（C08）已核对数据；僵尸资料沿用历史表并更新正式 C03<br>部分未核实条目保留待核对</p>
     </div>
     <div class="filters js-only">
       <div class="tabs" role="tablist" aria-label="选择图鉴类型">
@@ -57,8 +57,17 @@
       <p>你仍可访问上方《破序》官网；原始数值资料保留在项目的 Excel 归档中。</p>
     </div>
   </section>
+  <section class="disclaimer wrap" aria-labelledby="levelTitle"><h2 id="levelTitle">特殊关卡变更（v1.1.0–v1.1.1）</h2>
+    <p>以下为关卡专属规则，与上方全局植物／僵尸基本属性分离，不改写全局数值；带“约”字样的数值为资料记载口径。</p>
+    <p><b>冒险1-5／坚果保龄球1／坚果保龄球2（v1.1.1 C02）：</b>仅普通坚果、爆炸坚果、巨型坚果调用保龄球滚动逻辑；樱桃炸弹、火爆辣椒、墓碑吞噬者等非坚果植物恢复正常技能，不因碰撞被错误转成保龄球行为。</p>
+    <p><b>坚果保龄球2（v1.1.1 C01）：</b>普通随机僵尸池保留普通、路障、铁桶、撑杆、铁门、舞王；删除读报；新增橄榄球、小丑、扶梯、白眼巨人（共10种常规抽选类型）；仍为30波、原有传送带规则；普通／爆炸／巨型坚果权重 60:25:25、出卡速度 1.5× 为历史继承资料，未逐字节重审。</p>
+    <p><b>坚果保龄球1（v1.1.0）：</b>普通坚果 75%／爆炸坚果 25%，传送带出卡速度 1.5×；随机池删除读报，新增橄榄球、小丑。</p>
+    <p><b>坚果保龄球1／2（v1.1.0）：</b>普通坚果连续击中第 3／4／6 次掉普通／爆炸／巨型坚果卡，第 5 次全屏减速约 5 秒，第 7 次及以后每次全屏 600 点普通伤害；爆炸／巨型坚果不触发奖励。</p>
+    <p><b>看星星（v1.1.0）：</b>真正夜间（蘑菇无需咖啡豆、无天空自然阳光），不自动生墓碑；随机池取消铁桶，加入铁门、小丑、跳跳。</p>
+    <p><b>冒险3-10、4-10（v1.1.0）：</b>去除随机睡莲，新增免费可回冷的固定睡莲卡槽，传送带生成速率约 1.25×。</p>
+  </section>
   <section class="disclaimer wrap" aria-labelledby="scopeTitle"><h2 id="scopeTitle">资料口径</h2>
-    <p>本图鉴从项目既有的“植物改版详情_v1.0.2.xlsx”及“僵尸改版详情—传送门盾600HP修正版”Excel 提取，保留原来的术语与具体技能描述；它是资料展示，不代表逐项重新进行了 Windows 动态验收。特殊模式下的出怪规则可能与一般模式不同，图鉴中的概率通常表示对应僵尸类别内部的分流。</p>
+    <p>本图鉴从项目既有的“植物大战僵尸_破序_v1.1.1_49株植物改版详情.xlsx”及“植物大战僵尸_破序_v1.1.1_僵尸改版详情.xlsx”提取，49株全局参数沿用 v1.0.2（C08）已核对数据，僵尸资料沿用历史表并应用 v1.1.1 C03 已核实变更（冰车两项）；它是资料展示，不代表逐项重新进行了 Windows 动态验收。特殊模式下的出怪规则可能与一般模式不同，图鉴中的概率通常表示对应僵尸类别内部的分流。</p>
     <p>这是非商业粉丝改版的辅助资料，与 PopCap / EA 无官方关联。本文仅作改版机制介绍，不提供原版游戏资源下载。</p>
   </section>
 </main>

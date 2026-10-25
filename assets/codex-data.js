@@ -1,15 +1,16 @@
 window.POXU_CODEX_DATA = {
   "meta": {
-    "version": "v1.0.2 · C08",
-    "sourceVersion": "v1.0.2（C08）",
+    "version": "v1.1.1",
+    "sourceVersion": "基础植物全局参数沿用 v1.0.2（C08）核对；僵尸表继承历史并应用 v1.1.1 C03 已核实变更",
     "notes": "图鉴内容忠实取自已有Excel档案；部分属性仍可能标注“待核对”。本页面未重新对全部机制做机器码或Windows动态验收。",
     "sources": [
       {
-        "title": "植物改版详情_v1.0.2.xlsx"
+        "title": "植物大战僵尸_破序_v1.1.1_49株植物改版详情.xlsx",
+        "sha256": "D9D896030B2310AEA34EE990A1EA366C8CC5129BE6F8FF3E12111352DBEC9BEC"
       },
       {
-        "title": "植物大战僵尸_破序_v1.0.1_僵尸改版详情_传送门盾600HP修正版.xlsx",
-        "sha256": "7b1e9436fd915cde650b05ef3763899bd018b4fafd4df0a636f1d5db18d4e37b"
+        "title": "植物大战僵尸_破序_v1.1.1_僵尸改版详情.xlsx",
+        "sha256": "6B39DAA998CB9C177212BA444E51C1C1693AED134D0543C586A5A2BD4ACD7E89"
       }
     ],
     "plantCount": 49,
@@ -1292,10 +1293,10 @@ window.POXU_CODEX_DATA = {
       "variant": "普通冰车（90%）",
       "variantType": "普通",
       "art": "原版冰车",
-      "hp": "车体1800 HP",
+      "hp": "车体1500 HP",
       "speed": "25 px/s（约0.25px/tick）",
       "bite": "不啃食；车辆碾压",
-      "mechanic": "正常铺冰；冰道按位置与剩余时间更新；受地刺／仙人掌车辆专属反制。"
+      "mechanic": "正常铺冰；冰道按位置与剩余时间更新；受地刺／仙人掌车辆专属反制；铺冰坐标 int(mPosX+58)。"
     },
     {
       "id": "z37",
@@ -1303,10 +1304,10 @@ window.POXU_CODEX_DATA = {
       "variant": "花瓣轮胎精英（10%）",
       "variantType": "精英",
       "art": "橄榄球头＋金盏花花瓣轮胎",
-      "hp": "车体1000 HP",
+      "hp": "车体810 HP",
       "speed": "50 px/s（约0.50px/tick）",
       "bite": "不啃食；车辆碾压",
-      "mechanic": "冰道较短；地刺／地刺王不会直接爆胎，改版仙人掌仍可造成普通伤害；历史贴图图集闪退曾专项修复。"
+      "mechanic": "冰道较短；地刺／地刺王不会直接爆胎，改版仙人掌仍可造成普通伤害；历史贴图图集闪退曾专项修复；铺冰坐标 int(mPosX+58)。"
     },
     {
       "id": "z38",
